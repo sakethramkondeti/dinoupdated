@@ -204,16 +204,24 @@
             }
           };
 
-          document.querySelector("#unity-fullscreen-button").onclick = toggleFullscreen;
-          document.querySelector("#btn-header-fullscreen").onclick = toggleFullscreen;
+          var unityFullscreenBtn = document.querySelector("#unity-fullscreen-button");
+          if (unityFullscreenBtn) unityFullscreenBtn.onclick = toggleFullscreen;
 
-          document.querySelector("#btn-focus-canvas").onclick = function() {
-            canvas.focus();
-          };
+          var headerFullscreenBtn = document.querySelector("#btn-header-fullscreen");
+          if (headerFullscreenBtn) headerFullscreenBtn.onclick = toggleFullscreen;
 
-          canvas.addEventListener("click", function() {
-            canvas.focus();
-          });
+          var focusCanvasBtn = document.querySelector("#btn-focus-canvas");
+          if (focusCanvasBtn) {
+            focusCanvasBtn.onclick = function() {
+              canvas.focus();
+            };
+          }
+
+          if (canvas) {
+            canvas.addEventListener("click", function() {
+              canvas.focus();
+            });
+          }
 
         }).catch(function(message) {
           unityShowBanner("Failed to initialize game: " + message, "error");
@@ -222,9 +230,12 @@
 
       document.body.appendChild(script);
 
-      document.querySelector("#btn-reload-game").onclick = function() {
-        window.location.reload();
-      };
+      var reloadGameBtn = document.querySelector("#btn-reload-game");
+      if (reloadGameBtn) {
+        reloadGameBtn.onclick = function() {
+          window.location.reload();
+        };
+      }
     })();
   </script>
 </body>
