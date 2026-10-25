@@ -15,6 +15,7 @@ const mimeTypes = {
   '.ico': 'image/x-icon',
   '.wasm': 'application/wasm',
   '.data': 'application/octet-stream',
+  '.txt': 'text/plain; charset=utf-8',
 };
 
 const server = http.createServer((req, res) => {
